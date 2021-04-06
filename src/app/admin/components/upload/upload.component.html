@@ -1,0 +1,10 @@
+<div class="row" style="margin-top: 10px;">
+    <div class="md">
+        <input type="file" class="file-input" (change)="onFileSelected($event)" #fileUpload>
+        <div class="file-upload">
+            <button mat-mini-fab color="primary" class="upload-btn" (click)="fileUpload.click()">
+                Attach File
+            </button>
+        </div>
+    </div>
+</div>
