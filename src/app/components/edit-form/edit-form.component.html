@@ -1,0 +1,67 @@
+<h1 mat-dialog-title>Edit</h1>
+
+<div mat-dialog-content>
+    <form [formGroup]="formInstance">
+        <div class="mt-5">
+            <mat-form-field class="fullWidth" appearance="outline">
+                <mat-label>First Name </mat-label>
+                <input matInput type="text" class="formControl" name="first_name" formControlName="first_name">
+                <mat-error *ngIf="formInstance.controls['first_name']?.errors?.required">field required</mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="mt-5">
+            <mat-form-field class="fullWidth" appearance="outline">
+                <mat-label>Last Name</mat-label>
+                <input matInput type="text" class="formControl" name="last_name" formControlName="last_name" />
+                <mat-error *ngIf="formInstance.controls['last_name']?.errors?.required">field required</mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="mt-5">
+            <mat-form-field class="fullWidth" appearance="outline">
+                <mat-label>Email</mat-label>
+                <input matInput type="text" class="formControl" name="email" formControlName="email" />
+                <mat-error *ngIf="formInstance.controls['email']?.errors?.required">field required</mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="mt-5">
+            <mat-form-field class="fullWidth" appearance="outline">
+                <mat-label>Car Make</mat-label>
+                <input matInput type="text" class="formControl" name="car_make" formControlName="car_make" />
+                <mat-error *ngIf="formInstance.controls['car_make']?.errors?.required">field required</mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="mt-5">
+            <mat-form-field class="fullWidth" appearance="outline">
+                <mat-label>Car Model</mat-label>
+                <input matInput type="text" class="formControl" name="car_model" formControlName="car_model" />
+                <mat-error *ngIf="formInstance.controls['car_model']?.errors?.required">field required</mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="mt-5">
+            <mat-form-field class="fullWidth" appearance="outline">
+                <mat-label>Vin No</mat-label>
+                <input matInput type="text" class="formControl" name="vin_number" formControlName="vin_number" />
+                <mat-error *ngIf="formInstance.controls['last_name']?.errors?.required">field required</mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="mt-5">
+            <mat-form-field appearance="fill">
+                <mat-label>Date</mat-label>
+                <input matInput [matDatepicker]="picker1" class="formControl" name="manufactured_date" formControlName="manufactured_date">
+                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                <mat-datepicker #picker1></mat-datepicker>
+            </mat-form-field>
+        </div>
+    </form>
+</div>
+
+<div class="mt-5" mat-dialog-actions>
+    <button mat-raised-button color="primary" (click)="save()">Yes</button>
+    <button mat-raised-button mat-dialog-close>No</button>
+</div>
