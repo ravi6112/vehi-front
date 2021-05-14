@@ -5,7 +5,7 @@ import { Injectable } from "@angular/core";
 @Injectable({ providedIn: 'root' })
 export class VehiclesService {
     constructor(private apollo: Apollo) { }
-
+    graphqlResult:any;
     // update vehicles thorough graphql
     updateVehiclesGraphql(data: Vehicles) {
         this.apollo.mutate({
@@ -53,6 +53,54 @@ export class VehiclesService {
         error =>{
             console.log(error);
         })
+    }
+
+    paginationVehiclesGraphql(page: number, newest: boolean) {
+        return this.apollo.watchQuery({
+            query: gql`
+            query {
+                vehiclesPagination(
+                    page: ${page},
+                    newest: ${newest}
+                ) {
+                    uid
+                    id
+                    first_name
+                    last_name
+                    email
+                    car_model
+                    car_make
+                    vin_number
+                    manufactured_date
+                }
+            }
+            `
+          });
+    }
+
+    searchVehiclesGraphql(page: number, carModel: string) {
+        console.log(page,carModel);
+        return this.apollo.watchQuery({
+            query: gql `
+            query {
+                searchPagination(
+                    page: ${page},
+                    car_model: "${carModel}"
+                ) {
+                    uid
+                    id
+                    first_name
+                    last_name
+                    email
+                    car_model
+                    car_make
+                    vin_number
+                    manufactured_date
+                }
+            }
+            `
+        })
+
     }
 }
 

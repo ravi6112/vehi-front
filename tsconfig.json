@@ -20,6 +20,7 @@
       "dom",
       "esnext.asynciterable"
     ],
+    "types": ["node"],
     "allowSyntheticDefaultImports": true
   },
   "angularCompilerOptions": {

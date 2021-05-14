@@ -1,7 +1,11 @@
+<mat-form-field>
+    <mat-label>Car Model</mat-label>
+    <input matInput #carModel>
+</mat-form-field>
+<button mat-button (click)="searchPagination(0, carModel)">Search</button>
+
 <div class="wrapper">
-
     <table mat-table [dataSource]="vehicles" class="mat-elevation-z8">
-
         <!--- Note that these columns can be defined in any order.
         The actual rendered columns are set as a property on the row definition" -->
         <!---'id', 'first_name', 'last_name', 'email','car_model','car_make','vin_number','manufactured_date' -->
@@ -70,4 +74,7 @@
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
+    <mat-paginator [length]=1000 [pageSize]=25 [pageSizeOptions]="[5,10,25,100]"
+        (page)="pageEvent = $event; onPaginateChange($event,carModel)" showFirstLastButtons>
+    </mat-paginator>
 </div>
